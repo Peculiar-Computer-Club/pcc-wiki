@@ -141,14 +141,65 @@ Tools
 
 Usefull software and hardware tools
 
-#TODO
+[neo]vim
+--------------------------------------------------------------
+
+The meeting point of PCC's _cult of vi_.
+
+### Learning material
+
+* [Use Vim Like a Pro](https://leanpub.com/VimLikeAPro) by Tim Ottiger is a great book covering many important features of [neo]vim and explains its philosophy well. Learning the concepts described here will keep you busy for many weeks and will spark your curiosity about the editor even more.
+* [Learn Vimscript the Hard Way](https://learnvimscriptthehardway.stevelosh.com/) by Steve Losh. A lot of this editors power comes from its extensibility. Tweaking its behaviour to support your workflow will not only make you more effective. It will make you reconsider your view on process automation itself.
+
+### Tips and tricks
+
+No rocket science, but life changing stuff nevertheless.
+
+#### clipboard copy/paste
+
+If you want to copy to/paste from clipboard in neovim, the trick is to use `+` and `*` registers (`:help registers` to learn more). It is handy to define your own commands for this as in the following example. These make hitting `<leader>y` or `<leader>p` in visual and normal mode work as usual yank or paste, only on the specified registers. Since the `yank` sentence is not finished, this retains all the flexibility of the raw commands, allowing you to for example copy the whole word under cursor to clipboard by hitting `<leader>yiw`.
+
+The meaning of `+` and `*` registers differs based on your OS. See [this SO answer](https://stackoverflow.com/questions/11489428/how-to-make-vim-paste-from-and-copy-to-systems-clipboard) to learn more.
+
+Useful help command: `:help clipboard`
+
+Example `init.vim`
+
+```
+nnoremap <leader>y "+y
+nnoremap <leader>p "+p
+vnoremap <leader>y "+y
+vnoremap <leader>p "+p
+```
+
+#### quick `init.vim`/`.vimrc` config update without restarting the editor
+
+Open a vertical split with your `init.vim`/`.vimrc` with the first command, make changes, save, then use the second command to source the changes.
+
+```
+nnoremap <leader>ei :vsplit $MYVIMRC<cr>  # ei means edit init.vim
+nnoremap <leader>si :so $MYVIMRC<cr>      # si means source init.vim
+```
+
+#### neovim + tmux
+
+One major annoyance when using neovim inside tmux is a small default delay tmux has when you hit escape. This means, that when you want to exit insert mode, you have to wait before being able to type other neovim commands. Here is a setting to turn this off [1]. It might, or might not cause you problems. Consult tmux manpages (search for `escape-time`) or see <a href="https://superuser.com/a/942704" target="_blank" rel="noopener">this answer</a> for more information.
+
+Another helpful trick is to use vim navigation keys, which is the second line of the config [2]. It is not only that you do not have to switch from _hjkl_ to arrow keys based on where you are. You can also use _Shift + v_ in tmux's copy mode to select whole lines, just as in neovims visual mode.
+
+Example `~/.tmux.conf`
+
+```text
+set -s escape-time 0   # [1] avoid the delay when hitting escape
+set -g mode-keys vi    # [2] use your favorite navigation keys in copy mode
+```
 
 Books
 ==============================================================
 
 Nice books to put on the readinglist
 
-#TODO
+#TODO 
 
 Hardware
 ==============================================================
