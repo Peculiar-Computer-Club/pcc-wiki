@@ -183,7 +183,7 @@ nnoremap <leader>si :so $MYVIMRC<cr>      # si means source init.vim
 
 #### neovim + tmux
 
-One major annoyance when using neovim inside tmux is a small default delay tmux has when you hit escape. This means, that when you want to exit insert mode, you have to wait before being able to type other neovim commands. Here is a setting to turn this off [1]. It might, or might not cause you problems. Consult tmux manpages (search for `escape-time`) or see <a href="https://superuser.com/a/942704" target="_blank" rel="noopener">this answer</a> for more information.
+One major annoyance when using neovim inside tmux is a small default delay tmux has when you hit escape. This means, that when you want to exit insert mode, you have to wait before being able to type other neovim commands. Here is a setting to turn this off [1]. It might, or might not cause you problems. Consult tmux manpages (search for `escape-time`) or see [this answer](https://superuser.com/a/942704) for more information.
 
 Another helpful trick is to use vim navigation keys, which is the second line of the config [2]. It is not only that you do not have to switch from _hjkl_ to arrow keys based on where you are. You can also use _Shift + v_ in tmux's copy mode to select whole lines, just as in neovims visual mode.
 
